@@ -1,0 +1,22 @@
+{
+    "name": "guillaume/guillaume",
+    "authors": [
+        {
+            "name": "Guillaume",
+            "email": "Guillaume@exemple.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework"
+        }
+    },
+    "require": {
+        "guzzlehttp/psr7": "*",
+        "http-interop/response-sender": "*",
+        "squizlabs/php_codesniffer": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
