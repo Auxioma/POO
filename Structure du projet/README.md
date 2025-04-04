@@ -1,131 +1,119 @@
-Voici un exemple de README détaillé pour votre projet, basé sur les informations que vous m'avez fournies dans le fichier composer.json :
-
 # Guillaume/Guillaume
 
-Ce projet est une application web PHP minimaliste développée par **Guillaume**. Il utilise plusieurs bibliothèques pour gérer les requêtes HTTP, l'autoloading des classes et effectuer des tests unitaires. Le projet suit les normes PSR-4 pour l'autoloading des classes et utilise PHPUnit pour les tests.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Application web PHP minimaliste avec gestion des requêtes HTTP et tests unitaires.
 
 ## Table des matières
+
 - [Prérequis](#prérequis)
 - [Installation](#installation)
 - [Structure du projet](#structure-du-projet)
-- [Autoloading](#autoloading)
-- [Dépendances](#dépendances)
-  - [Dépendances principales](#dépendances-principales)
-  - [Dépendances de développement](#dépendances-de-développement)
-- [Tests](#tests)
+- [Configuration](#configuration)
 - [Utilisation](#utilisation)
+- [Tests](#tests)
+- [Dépendances](#dépendances)
+- [Contribuer](#contribuer)
 - [Licence](#licence)
 
 ## Prérequis
 
-Avant de commencer, vous devez avoir installé les éléments suivants :
-
-- [PHP](https://www.php.net/) version 7.4 ou supérieure.
-- [Composer](https://getcomposer.org/) pour gérer les dépendances du projet.
-- [PHPUnit](https://phpunit.de/) pour exécuter les tests (installé en tant que dépendance de développement).
+- PHP 7.4+
+- Composer 2.0+
+- PHPUnit 9.0+ (installé automatiquement via Composer)
 
 ## Installation
 
-1. Clonez le repository :
-   ```bash
-   git clone https://votre-repository-url.git
-   cd guillaume
+1. Cloner le dépôt :
+```bash
+git clone https://github.com/votre-utilisateur/guillaume.git
+cd guillaume
 
-    Installez les dépendances avec Composer :
+2. Installer les dépendances :
+composer install
 
-    composer install
-
-    Cela installera toutes les dépendances, y compris celles nécessaires au développement (phpunit par exemple).
-
-    Après l'installation, vous pouvez vérifier que l'autoloading fonctionne en incluant le fichier vendor/autoload.php dans vos scripts PHP.
+3 .Vérifier l'installation :
+php -v
+composer --version
+vendor/bin/phpunit --version
 
 Structure du projet
-
-Voici la structure principale du projet :
-
 guillaume/
 ├── src/
-│   └── Framework/         # Code source de l'application, y compris les classes du framework.
-│       └── App.php        # Exemple de classe du framework
-├── tests/                 # Tests unitaires du projet
-│   └── Framework/         # Tests spécifiques au framework
-│       └── AppTest.php    # Exemple de test pour la classe App
-├── composer.json          # Fichier de configuration de Composer
-├── README.md              # Ce fichier
-└── vendor/                # Répertoire généré par Composer contenant les dépendances
+│   └── Framework/         # Code source principal
+│       ├── App.php        # Classe principale
+│       └── ...            # Autres classes
+├── tests/                 # Tests unitaires
+│   └── Framework/         # Tests des classes Framework
+│       ├── AppTest.php    # Tests de la classe App
+│       └── ...            # Autres tests
+├── vendor/                # Dépendances Composer
+├── .gitignore             # Fichiers ignorés par Git
+├── composer.json          # Configuration Composer
+└── README.md              # Ce fichier
 
-Autoloading
+Configuration
 
-Le projet utilise l'autoloading conforme à la norme PSR-4. Les classes du projet sous le namespace Framework sont automatiquement chargées à partir du répertoire src/Framework.
+L'autoloading PSR-4 est configuré dans composer.json. Les classes sous le namespace Framework sont automatiquement chargées depuis src/Framework/.
 
-Exemple d'utilisation de l'autoloading :
+Exemple d'utilisation :
+php
+Copy
 
 require_once __DIR__ . '/vendor/autoload.php';
-
 use Framework\App;
-
-$app = new App();
-
-Dépendances
-
-Le projet utilise plusieurs bibliothèques via Composer pour faciliter le développement et la gestion des requêtes HTTP.
-Dépendances principales
-
-    guzzlehttp/psr7 : Fournit des implémentations de la norme PSR-7 pour les requêtes et réponses HTTP. Utilisé pour gérer les objets ServerRequest et Response.
-
-    http-interop/response-sender : Permet d'envoyer des réponses HTTP, une partie de la norme d'interopérabilité pour les frameworks PHP.
-
-    squizlabs/php_codesniffer : Utilisé pour analyser et vérifier le respect des normes de codage PHP (comme PSR-2).
-
-Dépendances de développement
-
-    phpunit/phpunit : Utilisé pour effectuer des tests unitaires sur le code de l'application.
-
-Tests
-
-Les tests sont situés dans le répertoire tests/ et utilisent PHPUnit. Pour exécuter les tests, assurez-vous que PHPUnit est installé et que les dépendances sont chargées avec Composer. Ensuite, vous pouvez exécuter la commande suivante pour lancer tous les tests :
-
-vendor/bin/phpunit
-
-Exemples de tests
-
-    Test de redirection (slash final) : Vérifie que les URL avec un slash final sont redirigées vers une version sans slash final.
-
-    Test de la route "/blog" : Vérifie que la route /blog renvoie une réponse correcte avec le message approprié.
-
-    Test d'erreur 404 : Vérifie que les URL non définies renvoient une erreur 404.
 
 Utilisation
 
-Pour exécuter l'application, vous pouvez simplement créer une instance de la classe App et exécuter une requête. Voici un exemple basique d'utilisation :
+Exemple de base :
+php
+Copy
 
+<?php
 require_once __DIR__ . '/vendor/autoload.php';
 
 use GuzzleHttp\Psr7\ServerRequest;
 use Framework\App;
 
+// Création de l'application
 $app = new App();
+
+// Exécution d'une requête
 $request = new ServerRequest('GET', '/blog');
 $response = $app->run($request);
 
-// Affiche le contenu de la réponse
+// Affichage de la réponse
 echo (string)$response->getBody();
 
-Licence
+Tests
 
-Ce projet est sous la licence MIT.
+Pour lancer les tests unitaires :
+bash
+Copy
 
+vendor/bin/phpunit
 
-### Explications des sections du README :
+Tests disponibles :
 
-- **Table des matières** : Fournit une vue d'ensemble des sections du fichier pour faciliter la navigation.
-- **Prérequis** : Liste des logiciels nécessaires avant de pouvoir installer ou développer avec le projet.
-- **Installation** : Explique comment cloner le repository et installer les dépendances avec Composer.
-- **Structure du projet** : Donne une vue d'ensemble de l'organisation des fichiers et des répertoires.
-- **Autoloading** : Explique comment les classes sont automatiquement chargées selon la norme PSR-4.
-- **Dépendances** : Détaille les bibliothèques utilisées et leur rôle dans le projet.
-- **Tests** : Fournit des informations sur l'exécution des tests et les différents tests unitaires présents dans le projet.
-- **Utilisation** : Montre comment utiliser l'application en ligne de commande avec un exemple de code.
+    Redirection d'URL (slash final)
 
-Ce **README** est conçu pour que toute personne qui rejoint le projet puisse facilement comprendre comment l'installer, l'utiliser et contribuer au développement. Si vous avez d'autres questions ou souhaitez ajouter des informations supplémentaires, n'hésitez pas à me le faire savoir !
+    Route /blog
 
+    Erreurs 404
+
+    ... (ajouter d'autres tests ici)
+
+Dépendances
+Principales
+
+    guzzlehttp/psr7 : Implémentation PSR-7 pour HTTP
+
+    http-interop/response-sender : Envoi de réponses HTTP
+
+Développement
+
+    phpunit/phpunit : Framework de tests
+
+    squizlabs/php_codesniffer : Analyse de code
+
+Voir le fichier composer.json pour la liste complète.
