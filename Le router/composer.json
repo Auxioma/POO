@@ -14,12 +14,12 @@
         }
     },
     "require": {
-        "guzzlehttp/psr7": "*",
-        "http-interop/response-sender": "*",
-        "mezzio/mezzio-fastroute": "^3.11.0"
+        "guzzlehttp/psr7": "^1.4",
+        "http-interop/response-sender": "^1.0",
+        "zendframework/zend-expressive-fastroute": "^2.0"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "*",
-        "phpunit/phpunit": "*"
+        "squizlabs/php_codesniffer": "^3.0",
+        "phpunit/phpunit": "^6.2"
     }
 }

@@ -1,87 +1,75 @@
 <?php
 
-// On place cette classe dans le namespace Framework
+// Le namespace permet d'organiser ton code et d'éviter les conflits de noms entre classes.
 namespace Framework;
 
-// On importe la classe Route personnalisée (celle que tu as créée dans Router\Route.php)
+// On importe des classes dont on a besoin (comme des outils externes).
 use Framework\Router\Route;
-
-// On importe l’interface PSR-7 représentant une requête HTTP (utilisée dans match)
 use Psr\Http\Message\ServerRequestInterface;
-
-// On importe le routeur FastRoute de Zend Expressive (il gère le routage réel derrière les coulisses)
 use Zend\Expressive\Router\FastRouteRouter;
 use Zend\Expressive\Router\Route as ZendRoute;
 
 /**
- * Classe Router
- * Elle permet d’enregistrer des routes et de faire le lien entre une requête et la bonne action à exécuter.
+ * Cette classe permet d'enregistrer des routes (URLs) et de retrouver celle qui correspond à une requête.
  */
 class Router
 {
     /**
-     * Le routeur utilisé en interne (basé sur FastRoute)
-     * Il gère la logique de correspondance des routes
      * @var FastRouteRouter
-     */ 
+     * On utilise un routeur rapide (de Zend) pour gérer les routes.
+     */
     private $router;
 
-    /**
-     * Constructeur de la classe Router
-     * À l’instanciation, on crée un objet FastRouteRouter (c’est lui qui fait le "vrai" travail de routage)
-     */
+    // Le constructeur initialise l'objet routeur (FastRouteRouter) dès que cette classe est utilisée.
     public function __construct()
     {
         $this->router = new FastRouteRouter();
     }
 
     /**
-     * Enregistre une route de type GET
-     *
-     * @param string $path Le chemin de l’URL (ex: "/blog/{slug}")
-     * @param callable $callable La fonction ou méthode à exécuter quand l’URL est atteinte
-     * @param string $name Le nom unique de la route (utile pour la génération d’URL)
+     * Méthode pour enregistrer une route de type GET.
+     * @param string $path Le chemin de l'URL (ex: "/contact")
+     * @param callable $callable Le code (fonction) à exécuter quand cette route est utilisée
+     * @param string $name Un nom pour identifier cette route (ex: "contact_page")
      */
     public function get(string $path, callable $callable, string $name)
     {
-        // On crée une nouvelle route avec la méthode GET grâce à la classe de Zend
+        // On ajoute une route GET au routeur avec le chemin, le code à exécuter, et son nom.
         $this->router->addRoute(new ZendRoute($path, $callable, ['GET'], $name));
     }
 
     /**
-     * Permet de savoir si une requête HTTP correspond à une route enregistrée
-     *
-     * @param ServerRequestInterface $request La requête HTTP reçue (contenant l'URL, la méthode GET/POST, etc.)
-     * @return Route|null Retourne un objet Route personnalisé si une route correspond, ou null sinon
+     * Méthode pour trouver la route correspondant à la requête HTTP reçue.
+     * @param ServerRequestInterface $request La requête HTTP (ex: un utilisateur qui visite une page)
+     * @return Route|null Retourne une instance de Route si une correspondance est trouvée, sinon null.
      */
     public function match(ServerRequestInterface $request): ?Route
     {
-        // On demande à Zend de vérifier si la requête correspond à une route
+        // On essaie de faire correspondre la requête à une route.
         $result = $this->router->match($request);
 
-        // Si oui, on retourne notre propre objet Route contenant les infos nécessaires
+        // Si une route correspond, on retourne un objet Route avec les infos associées.
         if ($result->isSuccess()) {
             return new Route(
-                $result->getMatchedRouteName(),      // Le nom de la route trouvée
-                $result->getMatchedMiddleware(),     // La fonction à exécuter
-                $result->getMatchedParams()          // Les paramètres extraits de l’URL (slug, id, etc.)
+                $result->getMatchedRouteName(),      // nom de la route
+                $result->getMatchedMiddleware(),     // le code (middleware) à exécuter
+                $result->getMatchedParams()          // les paramètres récupérés dans l'URL
             );
         }
 
-        // Si aucune route ne correspond, on retourne null (donc 404 plus tard dans App.php)
+        // Si aucune route ne correspond, on retourne null.
         return null;
     }
 
     /**
-     * Génère une URL à partir du nom d’une route et de ses paramètres
-     * Très utile pour les liens dans les vues : au lieu d’écrire manuellement l’URL, on la génère dynamiquement
-     *
-     * @param string $name Le nom de la route (ex: "post.show")
-     * @param array $params Les paramètres à insérer dans l’URL (ex: ['slug' => 'mon-article', 'id' => 18])
-     * @return string|null L’URL générée (ex: "/blog/mon-article-18")
+     * Méthode pour générer une URL à partir du nom d'une route et de paramètres.
+     * @param string $name Le nom de la route
+     * @param array $params Les paramètres à insérer dans l'URL
+     * @return string|null Retourne l'URL générée, ou null si la route n'existe pas
      */
     public function generateUri(string $name, array $params): ?string
     {
+        // On utilise le routeur pour construire une URL basée sur le nom et les paramètres.
         return $this->router->generateUri($name, $params);
     }
 }
