@@ -1,0 +1,25 @@
+{
+    "name": "guillaume/guillaume",
+    "authors": [
+        {
+            "name": "Guillaume",
+            "email": "Guillaume@exemple.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "src/Framework",
+            "App\\": "src",
+            "Tests\\": "tests"
+        }
+    },
+    "require": {
+        "guzzlehttp/psr7": "*",
+        "http-interop/response-sender": "*",
+        "mezzio/mezzio-fastroute": "^3.11.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*",
+        "phpunit/phpunit": "*"
+    }
+}
