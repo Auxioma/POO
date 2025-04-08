@@ -30,8 +30,7 @@ class BlogModule
         // Exemple : /blog/mon-article → appellera la méthode "show"
         // La regex [a-z\-]+ signifie qu’on accepte uniquement des lettres minuscules et des tirets
         // Le nom de cette route est "blog.show"
-        $router->get('/blog/{slug:[a-z\-]+}', [$this, 'show'], 'blog.show');
-    }
+        $router->get('/blog/{slug}/{id}', [$this, 'show'], 'blog.show');    }
 
     /**
      * Méthode appelée quand un utilisateur visite /blog
@@ -51,10 +50,9 @@ class BlogModule
      */
     public function show(Request $request): string
     {
-        // On récupère le slug transmis dans l'URL
         $slug = $request->getAttribute('slug');
-
-        // On l’affiche dans un titre HTML
-        return '<h1>Bienvenue sur l\'article ' . $slug . '</h1>';
+        $id = $request->getAttribute('id');
+    
+        return "<h1>Article $id : $slug</h1>";
     }
 }

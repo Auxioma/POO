@@ -1,79 +1,89 @@
 <?php
-// On place cette classe dans le namespace Framework\Router.
-// Cela veut dire qu’elle fait partie du "module" de routage de ton framework.
 namespace Framework\Router;
 
 /**
- * Classe Route
- * Cette classe représente une route qui a été trouvée (matchée) par le Router.
- * Par exemple : pour l’URL "/blog/mon-article", une Route correspondante va être créée.
+ * Classe représentant une route après la correspondance avec une requête
  */
 class Route
 {
-
     /**
-     * Nom de la route.
-     * Exemple : "blog.show"
-     * @var string
+     * @var string Le nom de la route
      */
-    private $name;
-
+    private string $name;
+    
     /**
-     * Fonction (callback) à exécuter si la route est utilisée.
-     * Généralement, c’est une méthode de contrôleur.
-     * @var callable
+     * @var callable Le callback à exécuter
      */
     private $callback;
-
+    
     /**
-     * Paramètres extraits de l’URL.
-     * Exemple : ['slug' => 'mon-article']
-     * @var array
+     * @var array Les paramètres extraits de l'URL
      */
-    private $parameters;
-
+    private array $parameters;
+    
     /**
-     * Constructeur de la route.
-     * Il permet d’enregistrer le nom, le callback, et les paramètres associés à une URL.
-     *
-     * @param string $name Le nom de la route (utilisé pour la génération d’URL)
-     * @param callable $callback La fonction à appeler quand la route est utilisée
-     * @param array $parameters Les paramètres extraits de l’URL (ex: slug, id…)
+     * Constructeur de la route
+     * 
+     * @param string $name Nom de la route
+     * @param callable $callback Fonction à exécuter
+     * @param array $parameters Paramètres de l'URL
      */
-    public function __construct(string $name, callable $callback, array $parameters)
+    public function __construct(string $name, callable $callback, array $parameters = [])
     {
         $this->name = $name;
         $this->callback = $callback;
         $this->parameters = $parameters;
     }
-
+    
     /**
-     * Retourne le nom de la route.
-     * Ce nom est utile pour retrouver une route plus tard (ex: pour générer une URL)
+     * Obtenir le nom de la route
+     * 
      * @return string
      */
     public function getName(): string
     {
         return $this->name;
     }
-
+    
     /**
-     * Retourne la fonction à appeler quand cette route est utilisée.
-     * Ce callback sera appelé dans App.php avec la requête en paramètre.
+     * Obtenir le callback
+     * 
      * @return callable
      */
     public function getCallback(): callable
     {
         return $this->callback;
     }
-
+    
     /**
-     * Retourne les paramètres extraits de l’URL dynamique.
-     * Exemple : pour "/blog/mon-slug", si l’URL correspond à "/blog/{slug}", ça retourne ['slug' => 'mon-slug']
-     * @return string[]
+     * Obtenir les paramètres
+     * 
+     * @return array
+     */
+    public function getParameters(): array
+    {
+        return $this->parameters;
+    }
+    
+    /**
+     * Alias de getParameters() pour compatibilité
+     * 
+     * @return array
      */
     public function getParams(): array
     {
         return $this->parameters;
+    }
+    
+    /**
+     * Obtenir un paramètre spécifique
+     * 
+     * @param string $name Nom du paramètre
+     * @param mixed $default Valeur par défaut si paramètre non trouvé
+     * @return mixed
+     */
+    public function getParameter(string $name, $default = null)
+    {
+        return $this->parameters[$name] ?? $default;
     }
 }
