@@ -1,7 +1,6 @@
 <?php
 require '../vendor/autoload.php';
 
-use App\Blog\BlogModule;
 
 // On crée une instance de notre application principale (App.php)
 // On lui passe un tableau contenant la liste des modules à charger

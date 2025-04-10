@@ -30,7 +30,8 @@ class BlogModule
         // Exemple : /blog/mon-article → appellera la méthode "show"
         // La regex [a-z\-]+ signifie qu’on accepte uniquement des lettres minuscules et des tirets
         // Le nom de cette route est "blog.show"
-        $router->get('/blog/{slug}/{id}', [$this, 'show'], 'blog.show');    }
+        $router->get('/blog/{slug}/{id}', [$this, 'show'], 'blog.show');    
+    }
 
     /**
      * Méthode appelée quand un utilisateur visite /blog
