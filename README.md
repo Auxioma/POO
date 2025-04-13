@@ -9,7 +9,7 @@ Présentation du projet, de ses objectifs et des outils utilisés.
 
 ---
 
-## 📁 Structure du Projet  
+## 📁 [Structure du Projet](https://github.com/Auxioma/POO/tree/main/Structure%20du%20projet)   
 Exploration de l’architecture du projet, des dossiers, et des dépendances de base.
 
 ---
