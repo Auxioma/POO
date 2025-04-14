@@ -8,7 +8,7 @@ namespace Tests\Framework;
 use Framework\Renderer;
 
 // Ligne 5 : Import de TestCase, la classe de base de PHPUnit pour créer des tests unitaires
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\TestCase; 
 
 // Définition de la classe de test qui hérite de TestCase
 class RendererTest extends TestCase {

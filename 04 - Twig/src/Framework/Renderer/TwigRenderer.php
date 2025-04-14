@@ -15,10 +15,10 @@ class TwigRenderer implements RendererInterface
     public function __construct(string $path)
     {
         // On crée un loader qui va chercher les fichiers twig dans le dossier donné
-        $this->loader = new \Twig_Loader_Filesystem($path);
+        $this->loader = new \Twig\Loader\FilesystemLoader($path);
 
         // On crée l'environnement Twig à partir du loader
-        $this->twig = new \Twig_Environment($this->loader, []);
+        $this->twig = new \Twig\Environment($this->loader, []);
     }
 
     /**
