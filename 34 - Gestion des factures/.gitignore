@@ -1,0 +1,7 @@
+.idea
+vendor
+composer.lock
+/tmp
+/public/uploads
+/downloads
+/config.php
