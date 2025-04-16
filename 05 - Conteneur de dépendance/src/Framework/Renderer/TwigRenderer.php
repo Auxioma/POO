@@ -26,7 +26,7 @@ class TwigRenderer implements RendererInterface
     * @param \Twig_Loader_Filesystem $loader Le chargeur de fichiers qui gère les chemins des templates
     * @param \Twig_Environment $twig L'environnement Twig configuré
     */
-   public function __construct(\Twig_Loader_Filesystem $loader, \Twig_Environment $twig)
+   public function __construct(\Twig\Loader\FilesystemLoader $loader, \Twig\Environment $twig)
    {
        $this->loader = $loader;
        $this->twig = $twig;

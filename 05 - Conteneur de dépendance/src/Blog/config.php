@@ -2,7 +2,7 @@
 
 // Importe la classe du module Blog et les fonctions du conteneur d'injection de dépendances
 use App\Blog\BlogModule;  // Le module Blog à configurer
-use function \Di\object;  // Fonction helper pour créer des objets via le conteneur DI
+use function \Di\autowire;  // Fonction helper pour créer des objets via le conteneur DI
 use function \Di\get;     // Fonction helper pour récupérer une valeur déjà définie dans le conteneur
 
 /**
@@ -18,5 +18,5 @@ return [
    // - object() indique au conteneur qu'il doit créer une instance de BlogModule
    // - constructorParameter() permet de spécifier la valeur d'un paramètre du constructeur
    // - get('blog.prefix') récupère la valeur de 'blog.prefix' définie juste au-dessus
-   BlogModule::class => object()->constructorParameter('prefix', get('blog.prefix'))
+   BlogModule::class => autowire()->constructorParameter('prefix', get('blog.prefix'))
 ];

@@ -11,7 +11,7 @@ use Framework\Router;
  * Elle permet d'utiliser une fonction appelée "path" directement dans les fichiers Twig.
  * Par exemple : {{ path('article.show', {'id': 12}) }}
  */
-class RouterTwigExtension extends \Twig_Extension
+class RouterTwigExtension extends \Twig\Extension\AbstractExtension
 {
     /**
      * @var Router
@@ -40,7 +40,7 @@ class RouterTwigExtension extends \Twig_Extension
     {
         return [
             // On déclare une nouvelle fonction Twig nommée "path" qui appelle la méthode pathFor().
-            new \Twig_SimpleFunction('path', [$this, 'pathFor'])
+            new \Twig\TwigFunction('path', [$this, 'pathFor'])
         ];
     }
 
