@@ -31,12 +31,12 @@ class Router
     public function __construct()
     {
         // Crée une instance de FastRouteRouter, qui sera utilisée pour gérer les routes.
-        $this->router = new FastRouteRouter(); 
+        $this->router = new FastRouteRouter();
     }
 
     /**
      * Enregistre une route de type GET dans le routeur.
-     * Cette méthode ajoute une route à l'application en spécifiant le chemin, 
+     * Cette méthode ajoute une route à l'application en spécifiant le chemin,
      * le callback (fonction ou contrôleur) et le nom de la route.
      *
      * @param string $path Le chemin de la route (ex : '/home', '/user/{id}').

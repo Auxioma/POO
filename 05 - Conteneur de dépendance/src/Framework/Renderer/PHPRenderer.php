@@ -29,7 +29,7 @@ class PHPRenderer implements RendererInterface
 
     /**
      * Constructeur du moteur de rendu
-     * 
+     *
      * @param string|null $defaultPath Chemin par défaut vers le dossier principal des vues
      */
     public function __construct(?string $defaultPath = null)
@@ -42,7 +42,7 @@ class PHPRenderer implements RendererInterface
 
     /**
      * Permet d'ajouter un chemin pour charger les vues
-     * 
+     *
      * @param string $namespace Le namespace ou le chemin si $path est null
      * @param string|null $path Le chemin vers le dossier des vues pour ce namespace
      */
@@ -64,7 +64,7 @@ class PHPRenderer implements RendererInterface
      * Exemples:
      *   $this->render('@blog/view');  // Utilise le namespace 'blog'
      *   $this->render('view');        // Utilise le namespace par défaut
-     * 
+     *
      * @param string $view Le nom de la vue à rendre (avec ou sans namespace)
      * @param array $params Variables à passer à la vue
      * @return string Le contenu rendu de la vue
@@ -112,7 +112,7 @@ class PHPRenderer implements RendererInterface
 
     /**
      * Vérifie si la vue spécifiée contient un namespace (commence par @)
-     * 
+     *
      * @param string $view Nom de la vue
      * @return bool True si la vue contient un namespace
      */
@@ -124,7 +124,7 @@ class PHPRenderer implements RendererInterface
     /**
      * Extrait le namespace d'une vue
      * Exemple: "@blog/article" retourne "blog"
-     * 
+     *
      * @param string $view Nom de la vue avec namespace
      * @return string Le namespace extrait
      */
@@ -137,7 +137,7 @@ class PHPRenderer implements RendererInterface
     /**
      * Remplace le namespace dans la vue par le chemin correspondant
      * Exemple: "@blog/article" devient "/path/to/blog/views/article"
-     * 
+     *
      * @param string $view Nom de la vue avec namespace
      * @return string Le chemin complet sans l'extension
      */
