@@ -9,7 +9,7 @@ interface RendererInterface
     /**
      * Méthode à implémenter pour ajouter un chemin de vues
      * Exemple : $renderer->addPath('blog', '/chemin/vers/vues/blog');
-     * 
+     *
      * @param string $namespace Le nom du namespace (ex: 'blog')
      * @param null|string $path Le chemin des vues pour ce namespace
      */
@@ -18,7 +18,7 @@ interface RendererInterface
     /**
      * Méthode à implémenter pour afficher une vue
      * Exemple : $renderer->render('@blog/view', ['titre' => 'Bienvenue']);
-     * 
+     *
      * @param string $view Le nom de la vue à afficher (ex: '@blog/index')
      * @param array $params Tableau associatif contenant les variables à passer à la vue
      * @return string Le contenu HTML généré par la vue

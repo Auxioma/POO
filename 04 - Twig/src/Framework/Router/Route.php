@@ -31,7 +31,7 @@ class Route
 
     /**
      * Constructeur : initialise la route avec ses propriétés
-     * 
+     *
      * @param string   $name       Le nom de la route
      * @param callable $callback   Le contrôleur associé
      * @param array    $parameters Les paramètres extraits de l'URL
@@ -45,7 +45,7 @@ class Route
 
     /**
      * Retourne le nom de la route
-     * 
+     *
      * @return string
      */
     public function getName(): string
@@ -55,7 +55,7 @@ class Route
 
     /**
      * Retourne le callback (ex: une méthode d’un contrôleur)
-     * 
+     *
      * @return callable
      */
     public function getCallback(): callable
@@ -65,7 +65,7 @@ class Route
 
     /**
      * Retourne les paramètres capturés dans l’URL (ex: ['slug' => 'mon-article'])
-     * 
+     *
      * @return string[]
      */
     public function getParams(): array

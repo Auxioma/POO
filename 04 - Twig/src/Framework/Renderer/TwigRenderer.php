@@ -24,7 +24,7 @@ class TwigRenderer implements RendererInterface
     /**
      * Ajoute un chemin supplémentaire pour un namespace spécifique
      * Cela permet d’organiser les vues par modules (ex: @blog)
-     * 
+     *
      * @param string $namespace Nom du namespace (ex: 'blog')
      * @param null|string $path Chemin vers les vues correspondantes
      */
@@ -37,7 +37,7 @@ class TwigRenderer implements RendererInterface
     /**
      * Affiche une vue en utilisant Twig
      * Le nom du fichier `.twig` est automatiquement ajouté
-     * 
+     *
      * @param string $view Nom de la vue (ex: '@blog/index')
      * @param array $params Variables passées à la vue
      * @return string Code HTML généré par Twig
@@ -50,7 +50,7 @@ class TwigRenderer implements RendererInterface
 
     /**
      * Ajoute une variable globale accessible dans toutes les vues Twig
-     * 
+     *
      * @param string $key Nom de la variable
      * @param mixed $value Valeur de la variable
      */
