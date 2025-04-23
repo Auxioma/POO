@@ -3,7 +3,7 @@ namespace App\Auth;
 
 use Framework\Auth;
 
-class AuthTwigExtension extends \Twig_Extension
+class AuthTwigExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -19,7 +19,7 @@ class AuthTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('current_user', [$this->auth, 'getUser'])
+            new \Twig\TwigFunction('current_user', [$this->auth, 'getUser'])
         ];
     }
 }

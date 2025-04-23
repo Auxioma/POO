@@ -14,5 +14,5 @@ return [
         \DI\get(BasketTwigExtension::class)
     ]),
     App\Basket\Basket::class => factory(BasketFactory::class),
-    BasketAction::class => object()->constructorParameter('stripeKey', get('stripe.key'))
+    BasketAction::class => autowire()->constructorParameter('stripeKey', get('stripe.key'))
 ];

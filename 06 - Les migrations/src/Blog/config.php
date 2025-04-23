@@ -4,7 +4,7 @@
 use App\Blog\BlogModule;
 
 // On importe deux fonctions utilitaires du conteneur PHP-DI
-use function \Di\object;
+use function \Di\autowire;
 use function \Di\get;
 
 // Ce fichier retourne un tableau de configuration

@@ -19,7 +19,7 @@ return [
       \DI\get(TextExtension::class),
       \DI\get(TimeExtension::class)
     ],
-    \Framework\Router::class => \DI\object(),
+    \Framework\Router::class => \DI\autowire(),
     RendererInterface::class => \DI\factory(TwigRendererFactory::class),
     \PDO::class => function (\Psr\Container\ContainerInterface $c) {
         return new PDO(

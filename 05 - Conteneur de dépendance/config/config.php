@@ -18,11 +18,11 @@ return [
     ],
     
     // Enregistre le service Router dans le conteneur d'injection de dépendances
-    // \DI\object() crée une nouvelle instance de la classe Router
+    // \DI\autowire() crée une nouvelle instance de la classe Router
     \Framework\Router::class => \DI\autowire(),
     
     // Associe l'interface RendererInterface à l'implémentation TwigRenderer
     // \DI\factory() utilise une factory pour créer l'instance avec la configuration appropriée
     // Cela permet de changer facilement le moteur de rendu sans modifier le reste du code
     RendererInterface::class => \DI\factory(TwigRendererFactory::class)
-];
+]; 

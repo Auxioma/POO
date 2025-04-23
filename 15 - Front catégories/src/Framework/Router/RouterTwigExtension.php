@@ -4,7 +4,7 @@ namespace Framework\Router;
 
 use Framework\Router;
 
-class RouterTwigExtension extends \Twig_Extension
+class RouterTwigExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -20,7 +20,7 @@ class RouterTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('path', [$this, 'pathFor'])
+            new \Twig\TwigFunction('path', [$this, 'pathFor'])
         ];
     }
 

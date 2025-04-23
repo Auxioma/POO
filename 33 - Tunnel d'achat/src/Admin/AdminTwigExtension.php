@@ -1,7 +1,7 @@
 <?php
 namespace App\Admin;
 
-class AdminTwigExtension extends \Twig_Extension
+class AdminTwigExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -17,7 +17,7 @@ class AdminTwigExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('admin_menu', [$this, 'renderMenu'], ['is_safe' => ['html']])
+            new \Twig\TwigFunction('admin_menu', [$this, 'renderMenu'], ['is_safe' => ['html']])
         ];
     }
 

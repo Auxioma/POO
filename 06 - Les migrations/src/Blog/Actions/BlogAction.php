@@ -2,61 +2,88 @@
 // On déclare le début du fichier PHP
 
 namespace App\Blog\Actions;
-// On définit l'espace de noms (namespace) de cette classe. Cela permet d'organiser le code comme des dossiers virtuels.
-// Ici, la classe se trouve dans le module "Blog", dossier "Actions".
+// ------------------------------------------------------------
+// Le namespace permet de ranger les classes comme dans des dossiers.
+// Ici, la classe BlogAction fait partie du module "Blog", dans le sous-dossier "Actions".
+// Cela évite aussi les conflits de noms entre différentes classes du projet.
+// ------------------------------------------------------------
 
 use Framework\Renderer\RendererInterface;
-// On importe l’interface RendererInterface, qui permet d’afficher des vues (fichiers HTML par exemple).
+// On importe une interface qui permet d’afficher des vues HTML (ou autre).
+// Une "interface" est un contrat : elle dit quelles méthodes une classe doit implémenter.
 
 use Psr\Http\Message\ServerRequestInterface as Request;
-// On importe l’interface Request, qui représente une requête HTTP (URL, paramètres, etc.).
+// On importe une interface normalisée représentant une requête HTTP.
+// Elle fait partie du standard PSR-7 (utilisé par beaucoup de frameworks modernes).
+
+// ------------------------------------------------------------
+// DÉCLARATION DE LA CLASSE BlogAction
+// ------------------------------------------------------------
 
 class BlogAction
 {
     /**
      * @var RendererInterface
-     * On déclare une propriété privée $renderer, de type RendererInterface.
-     * Ce sera le moteur de rendu qu’on utilise pour afficher les pages HTML.
+     * Déclaration d'une propriété privée : $renderer
+     * Ce sera un objet qui sait "rendre" (afficher) des vues.
+     * On suit ici le principe d'injection de dépendance : on ne crée pas l'objet dans la classe, on le reçoit.
      */
     private $renderer;
 
+    /**
+     * Constructeur de la classe
+     *
+     * @param RendererInterface $renderer : le moteur de rendu (par exemple Twig)
+     */
     public function __construct(RendererInterface $renderer)
     {
-        // Le constructeur reçoit une instance du moteur de rendu (RendererInterface)
-        // Cette instance est automatiquement injectée grâce au conteneur de dépendances.
+        // Le conteneur d'injection (DI Container) va passer automatiquement le bon objet ici.
         $this->renderer = $renderer;
     }
 
+    /**
+     * Méthode spéciale "__invoke" : rend l'objet "appelable" comme une fonction
+     *
+     * @param Request $request : l'objet représentant la requête HTTP (avec l’URL, les données GET/POST, etc.)
+     * @return mixed : une réponse générée (souvent une chaîne HTML)
+     */
     public function __invoke(Request $request)
     {
-        // Cette méthode rend la classe "appelable" comme une fonction
-        // Elle est appelée automatiquement quand une route utilise cette classe comme contrôleur
-
+        // On récupère un paramètre "slug" depuis l'URL (ex: /blog/article-mon-titre)
         $slug = $request->getAttribute('slug');
-        // On essaie de récupérer l’attribut "slug" depuis l’URL (ex: /blog/mon-article)
 
+        // Si un "slug" est présent dans l'URL, on veut afficher l’article correspondant
         if ($slug) {
-            // S’il y a un slug dans l’URL, on appelle la méthode show() pour afficher l’article
-            return $this->show($slug);
+            return $this->show($slug); // appel de la méthode show()
         }
 
-        // Sinon, on affiche la liste des articles (page d'accueil du blog)
-        return $this->index();
+        // Sinon, on affiche la liste des articles du blog
+        return $this->index(); // appel de la méthode index()
     }
 
+    /**
+     * Affiche la page d’accueil du blog (liste des articles)
+     *
+     * @return string : HTML généré par Twig
+     */
     public function index(): string
     {
-        // Cette méthode affiche la page d'accueil du blog
-        // Elle utilise le moteur de rendu pour afficher le template @blog/index
+        // On demande au moteur de rendu d'afficher la vue "@blog/index"
+        // Le "@" est souvent utilisé pour indiquer le nom du module (ici : blog)
         return $this->renderer->render('@blog/index');
     }
 
+    /**
+     * Affiche un article spécifique selon son "slug"
+     *
+     * @param string $slug : identifiant unique de l’article dans l’URL
+     * @return string : HTML généré par la vue Twig
+     */
     public function show(string $slug): string
     {
-        // Cette méthode affiche un article en particulier, selon son "slug"
-        // On passe le slug au template pour qu’il puisse l’utiliser dans la page HTML
+        // On passe le slug à la vue pour pouvoir l'afficher ou s’en servir (ex: charger l'article depuis la BDD)
         return $this->renderer->render('@blog/show', [
-            'slug' => $slug
+            'slug' => $slug // Ce tableau représente les variables accessibles dans la vue Twig
         ]);
     }
 }

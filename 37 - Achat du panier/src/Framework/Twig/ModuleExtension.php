@@ -5,7 +5,7 @@ namespace App\Framework\Twig;
 
 use Framework\App;
 
-class ModuleExtension extends \Twig_Extension
+class ModuleExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -21,7 +21,7 @@ class ModuleExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('module_enabled', [$this, 'moduleEnabled'])
+            new \Twig\TwigFunction('module_enabled', [$this, 'moduleEnabled'])
         ];
     }
 

@@ -7,7 +7,7 @@ namespace Framework\Twig;
  *
  * @package Framework\Twig
  */
-class TextExtension extends \Twig_Extension
+class TextExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**

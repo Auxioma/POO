@@ -4,6 +4,8 @@ namespace Framework\Renderer;
 
 // On importe l'interface ContainerInterface, utilisée pour accéder aux services de la container.
 use Psr\Container\ContainerInterface;
+use Twig\Loader\FilesystemLoader;
+
 
 // Définition de la classe TwigRendererFactory.
 // C’est une "factory" : une classe qui a pour rôle de créer et configurer un objet.
@@ -17,7 +19,7 @@ class TwigRendererFactory
         $viewPath = $container->get('views.path');
 
         // On crée un "loader" Twig, qui sait où aller chercher les fichiers de templates.
-        $loader = new \Twig\Loader\FilesystemLoader($viewPath);
+        $loader = new FilesystemLoader($viewPath);
 
         // On initialise l'environnement Twig avec ce loader.
         $twig = new \Twig\Environment($loader);

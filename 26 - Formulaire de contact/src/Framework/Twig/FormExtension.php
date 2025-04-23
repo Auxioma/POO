@@ -2,13 +2,13 @@
 
 namespace Framework\Twig;
 
-class FormExtension extends \Twig_Extension
+class FormExtension extends \Twig\Extension\AbstractExtension
 {
 
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('field', [$this, 'field'], [
+            new \Twig\TwigFunction('field', [$this, 'field'], [
                 'is_safe'       => ['html'],
                 'needs_context' => true
             ])

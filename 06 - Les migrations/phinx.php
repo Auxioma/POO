@@ -8,18 +8,18 @@ foreach ($modules as $module) {
         $migrations[] = $module::MIGRATIONS;
     }
     if ($module::SEEDS) {
-        $seeds[] = $module::SEEDS;
+        $seeds[] = $module::SEEDS; 
     }
 }
 
 return [
     'paths'        => [
-        'migrations' => $migrations,
+        'migrations' => $migrations, 
         'seeds'      => $seeds
     ],
     'environments' => [
-        'default_database' => 'development',
-        'development'      => [
+        'default_environment' => 'development',
+        'development'      => [ 
             'adapter' => 'mysql',
             'host' => $app->getContainer()->get('database.host'),
             'name' => $app->getContainer()->get('database.name'),

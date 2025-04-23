@@ -33,7 +33,7 @@ return [
       \DI\get(PriceExtension::class)
     ],
     SessionInterface::class => \DI\object(PHPSession::class),
-    CsrfMiddleware::class => \DI\object()->constructor(\DI\get(SessionInterface::class)),
+    CsrfMiddleware::class => \DI\autowire()->constructor(\DI\get(SessionInterface::class)),
     Router::class => \DI\factory(RouterFactory::class),
     RendererInterface::class => \DI\factory(TwigRendererFactory::class),
     \PDO::class => function (\Psr\Container\ContainerInterface $c) {

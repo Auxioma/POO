@@ -3,7 +3,7 @@ namespace Framework\Twig;
 
 use Framework\Session\FlashService;
 
-class FlashExtension extends \Twig_Extension
+class FlashExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -19,7 +19,7 @@ class FlashExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('flash', [$this, 'getFlash'])
+            new \Twig\TwigFunction('flash', [$this, 'getFlash'])
         ];
     }
 

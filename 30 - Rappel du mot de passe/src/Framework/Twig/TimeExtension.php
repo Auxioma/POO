@@ -1,7 +1,7 @@
 <?php
 namespace Framework\Twig;
 
-class TimeExtension extends \Twig_Extension
+class TimeExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**

@@ -90,11 +90,11 @@ class App
         // Si la réponse est une chaîne, crée une réponse HTTP 200 avec cette chaîne comme corps
         if (is_string($response)) {
             return new Response(200, [], $response);
-        } 
+        }
         // Si la réponse est déjà une instance de `ResponseInterface`, la retourne directement
         elseif ($response instanceof ResponseInterface) {
             return $response;
-        } 
+        }
         // Si la réponse n'est ni une chaîne ni un `ResponseInterface`, lance une exception
         else {
             throw new \Exception('The response is not a string or an instance of ResponseInterface');

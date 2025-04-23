@@ -16,7 +16,7 @@ return [
     })->parameter('auth', \DI\get(Auth::class)),
     Auth::class => \DI\get(DatabaseAuth::class),
 
-    \App\Auth\UserTable::class => \DI\object()->constructorParameter('entity', \DI\get('auth.entity')),
-    ForbiddenMiddleware::class => \DI\object()->constructorParameter('loginPath', \DI\get('auth.login')),
-    PasswordResetMailer::class => \DI\object()->constructorParameter('from', \DI\get('mail.from'))
+    \App\Auth\UserTable::class => \DI\autowire()->constructorParameter('entity', \DI\get('auth.entity')),
+    ForbiddenMiddleware::class => \DI\autowire()->constructorParameter('loginPath', \DI\get('auth.login')),
+    PasswordResetMailer::class => \DI\autowire()->constructorParameter('from', \DI\get('mail.from'))
 ];

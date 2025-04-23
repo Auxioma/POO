@@ -3,6 +3,7 @@
 // Ce fichier est une migration : il sert à créer une table dans la base de données
 
 use Phinx\Migration\AbstractMigration;
+
 // On importe la classe de base AbstractMigration fournie par Phinx
 // Elle contient des méthodes utiles pour modifier la base de données
 

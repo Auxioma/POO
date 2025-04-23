@@ -18,7 +18,7 @@ return [
         'seeds'      => $seeds
     ],
     'environments' => [
-        'default_database' => 'development',
+        'default_environment' => 'development',
         'development'      => [
             'adapter' => 'mysql',
             'host' => $app->getContainer()->get('database.host'),

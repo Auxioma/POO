@@ -21,7 +21,7 @@ class PHPRenderer implements RendererInterface
     /**
      * Le constructeur permet de spécifier un chemin par défaut lors de la création de l'objet.
      * Si un chemin est donné, il est ajouté avec la méthode addPath().
-     * 
+     *
      * @param string|null $defaultPath
      */
     public function __construct(?string $defaultPath = null)
@@ -35,7 +35,7 @@ class PHPRenderer implements RendererInterface
     /**
      * Ajoute un chemin pour charger les vues.
      * On peut associer un chemin spécifique à un namespace (comme @blog par exemple).
-     * 
+     *
      * @param string $namespace
      * @param null|string $path
      */
@@ -53,11 +53,11 @@ class PHPRenderer implements RendererInterface
     /**
      * Permet de rendre une vue en précisant un nom de vue et des paramètres.
      * Le chemin peut être précisé en utilisant des namespaces ajoutés avec addPath().
-     * 
+     *
      * Exemple d'utilisation :
      * $this->render('@blog/view'); // Pour une vue dans le namespace 'blog'
      * $this->render('view'); // Pour une vue dans le namespace par défaut
-     * 
+     *
      * @param string $view
      * @param array $params
      * @return string
@@ -94,7 +94,7 @@ class PHPRenderer implements RendererInterface
 
     /**
      * Permet de rajouter des variables globales qui seront disponibles dans toutes les vues.
-     * 
+     *
      * @param string $key
      * @param mixed $value
      */
@@ -106,7 +106,7 @@ class PHPRenderer implements RendererInterface
 
     /**
      * Vérifie si le nom de la vue contient un namespace (indiqué par le signe @).
-     * 
+     *
      * @param string $view
      * @return bool
      */
@@ -117,7 +117,7 @@ class PHPRenderer implements RendererInterface
 
     /**
      * Extrait le nom du namespace d'une vue, qui est la partie avant le premier '/'.
-     * 
+     *
      * @param string $view
      * @return string
      */
@@ -129,7 +129,7 @@ class PHPRenderer implements RendererInterface
     /**
      * Remplace le namespace dans le nom de la vue par le chemin approprié
      * afin de localiser le fichier de la vue.
-     * 
+     *
      * @param string $view
      * @return string
      */

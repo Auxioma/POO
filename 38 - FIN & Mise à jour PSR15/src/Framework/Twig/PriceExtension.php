@@ -2,7 +2,7 @@
 
 namespace App\Framework\Twig;
 
-class PriceExtension extends \Twig_Extension
+class PriceExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -18,8 +18,8 @@ class PriceExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('vat', [$this, 'getVat']),
-            new \Twig_SimpleFunction('vat_only', [$this, 'getVatOnly'])
+            new \Twig\TwigFunction('vat', [$this, 'getVat']),
+            new \Twig\TwigFunction('vat_only', [$this, 'getVatOnly'])
         ];
     }
 

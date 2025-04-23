@@ -10,5 +10,5 @@ return [
         \Di\get(\App\Auth\AuthTwigExtension::class)
     ]),
     Auth::class => \DI\get(DatabaseAuth::class),
-    ForbiddenMiddleware::class => \DI\object()->constructorParameter('loginPath', \DI\get('auth.login'))
+    ForbiddenMiddleware::class => \DI\autowire()->constructorParameter('loginPath', \DI\get('auth.login'))
 ];

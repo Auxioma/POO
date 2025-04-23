@@ -7,13 +7,13 @@ use Framework\Router\RouterTwigExtension;
 return [
     'database.host' => 'localhost',
     'database.username' => 'root',
-    'database.password' => 'root',
-    'database.name' => 'monsupersite',
+    'database.password' => '',
+    'database.name' => 'blog',
     'views.path' => dirname(__DIR__) . '/views',
     'twig.extensions' => [
       \DI\get(RouterTwigExtension::class)
     ],
-    \Framework\Router::class => \DI\object(),
+    \Framework\Router::class => \DI\autowire(),
     RendererInterface::class => \DI\factory(TwigRendererFactory::class),
     \PDO::class => function (\Psr\Container\ContainerInterface $c) {
         return new PDO(

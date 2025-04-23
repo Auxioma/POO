@@ -5,7 +5,7 @@ use Framework\Router;
 use Pagerfanta\Pagerfanta;
 use Pagerfanta\View\TwitterBootstrap4View;
 
-class PagerFantaExtension extends \Twig_Extension
+class PagerFantaExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -21,7 +21,7 @@ class PagerFantaExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('paginate', [$this, 'paginate'], ['is_safe' => ['html']])
+            new \Twig\TwigFunction('paginate', [$this, 'paginate'], ['is_safe' => ['html']])
         ];
     }
 

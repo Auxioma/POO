@@ -3,7 +3,7 @@ namespace Framework\Twig;
 
 use Framework\Middleware\CsrfMiddleware;
 
-class CsrfExtension extends \Twig_Extension
+class CsrfExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -19,7 +19,7 @@ class CsrfExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('csrf_input', [$this, 'csrfInput'], ['is_safe' => ['html']])
+            new \Twig\TwigFunction('csrf_input', [$this, 'csrfInput'], ['is_safe' => ['html']])
         ];
     }
 

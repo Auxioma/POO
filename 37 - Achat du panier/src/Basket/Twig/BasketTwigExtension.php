@@ -5,7 +5,7 @@ namespace App\Basket\Twig;
 
 use App\Basket\Basket;
 
-class BasketTwigExtension extends \Twig_Extension
+class BasketTwigExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
@@ -21,7 +21,7 @@ class BasketTwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-          new \Twig_SimpleFunction('basket_count', [$this->basket, 'count'])
+          new \Twig\TwigFunction('basket_count', [$this->basket, 'count'])
         ];
     }
 }

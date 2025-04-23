@@ -2,6 +2,7 @@
 // Début du fichier PHP
 
 use Phinx\Seed\AbstractSeed;
+
 // On importe la classe AbstractSeed qui permet de créer des "seeders" (données de test/remplissage)
 
 class PostSeeder extends AbstractSeed

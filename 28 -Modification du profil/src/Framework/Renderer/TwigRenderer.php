@@ -6,7 +6,7 @@ class TwigRenderer implements RendererInterface
 
     private $twig;
 
-    public function __construct(\Twig_Environment $twig)
+    public function __construct(\Twig\Environment $twig)
     {
         $this->twig = $twig;
     }
@@ -47,9 +47,9 @@ class TwigRenderer implements RendererInterface
     }
 
     /**
-     * @return \Twig_Environment
+     * @return \Twig\Environment
      */
-    public function getTwig(): \Twig_Environment
+    public function getTwig(): \Twig\Environment
     {
         return $this->twig;
     }
