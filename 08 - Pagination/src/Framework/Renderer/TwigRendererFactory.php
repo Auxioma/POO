@@ -1,6 +1,7 @@
 <?php
 namespace Framework\Renderer;
 
+use Twig\Loader\FilesystemLoader;
 use Psr\Container\ContainerInterface;
 
 class TwigRendererFactory

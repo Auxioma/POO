@@ -1,6 +1,8 @@
 <?php
 namespace Framework\Twig;
 
+use Twig\TwigFilter;
+
 class TimeExtension extends \Twig\Extension\AbstractExtension
 {
 
@@ -10,7 +12,7 @@ class TimeExtension extends \Twig\Extension\AbstractExtension
     public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter('ago', [$this, 'ago'], ['is_safe' => ['html']])
+            new TwigFilter('ago', [$this, 'ago'], ['is_safe' => ['html']])
         ];
     }
 

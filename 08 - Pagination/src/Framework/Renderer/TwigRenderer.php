@@ -1,6 +1,8 @@
 <?php
 namespace Framework\Renderer;
 
+use Twig\Loader\FilesystemLoader;
+
 class TwigRenderer implements RendererInterface
 {
 

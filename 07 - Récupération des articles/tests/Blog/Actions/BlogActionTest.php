@@ -25,7 +25,7 @@ class BlogActionTest extends TestCase
 
     private $router;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->renderer = $this->prophesize(RendererInterface::class);
         $this->postTable = $this->prophesize(PostTable::class);

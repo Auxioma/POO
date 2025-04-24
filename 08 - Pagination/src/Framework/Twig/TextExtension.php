@@ -2,6 +2,8 @@
 
 namespace Framework\Twig;
 
+use Twig\TwigFilter;
+
 /**
  * Série d'extensions concernant les textes
  *
@@ -16,7 +18,7 @@ class TextExtension extends \Twig\Extension\AbstractExtension
     public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter('excerpt', [$this, 'excerpt'])
+            new TwigFilter('excerpt', [$this, 'excerpt'])
         ];
     }
 
