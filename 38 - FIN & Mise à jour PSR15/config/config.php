@@ -18,7 +18,7 @@ return [
     'env' => \DI\env('ENV', 'production'),
     'database.host' => '127.0.0.1',
     'database.username' => 'root',
-    'database.password' => 'root',
+    'database.password' => '',
     'database.name' => 'blog',
     'views.path' => dirname(__DIR__) . '/views',
     'twig.extensions' => [

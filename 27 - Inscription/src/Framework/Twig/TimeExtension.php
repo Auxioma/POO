@@ -5,12 +5,12 @@ class TimeExtension extends \Twig\Extension\AbstractExtension
 {
 
     /**
-     * @return \Twig_SimpleFilter[]
+     * @return \Twig\TwigFilter[]
      */
     public function getFilters(): array
     {
         return [
-            new \Twig_SimpleFilter('ago', [$this, 'ago'], ['is_safe' => ['html']])
+            new \Twig\TwigFilter('ago', [$this, 'ago'], ['is_safe' => ['html']])
         ];
     }
 

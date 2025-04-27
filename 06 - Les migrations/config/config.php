@@ -29,8 +29,8 @@ return [
 
     'database.host' => 'localhost',          // Adresse du serveur MySQL (localhost = l’ordinateur actuel)
     'database.username' => 'root',           // Identifiant pour se connecter à la base de données
-    'database.password' => 'root',           // Mot de passe associé à l’utilisateur ci-dessus
-    'database.name' => 'monsupersite',       // Nom de la base de données à utiliser
+    'database.password' => '',           // Mot de passe associé à l’utilisateur ci-dessus
+    'database.name' => 'blog',       // Nom de la base de données à utiliser
 
     // -------------------------------------------------
     // CHEMIN VERS LES VUES (templates HTML)

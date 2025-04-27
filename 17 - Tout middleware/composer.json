@@ -16,16 +16,16 @@
     "require": {
         "guzzlehttp/psr7": "*",
         "http-interop/response-sender": "*",
-        "zendframework/zend-expressive-fastroute": "^2.0",
+        "zendframework/zend-expressive-fastroute": "*",
         "twig/twig": "*",
-        "php-di/php-di": "^5.4",
-        "pagerfanta/pagerfanta": "^1.0",
+        "php-di/php-di": "*",
+        "pagerfanta/pagerfanta": "*",
         "middlewares/whoops": "^0.4.1"
     },
     "require-dev": {
-        "squizlabs/php_codesniffer": "^3.0",
-        "phpunit/phpunit": "^6.2",
-        "robmorgan/phinx": "^0.8.1",
+        "squizlabs/php_codesniffer": "*",
+        "phpunit/phpunit": "*",
+        "robmorgan/phinx": "*",
         "fakerphp/faker": "*"
     }
 }

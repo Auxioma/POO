@@ -17,8 +17,8 @@ return [
     'env' => \DI\env('ENV', 'production'),
     'database.host' => 'localhost',
     'database.username' => 'root',
-    'database.password' => 'root',
-    'database.name' => 'monsupersite',
+    'database.password' => '',
+    'database.name' => 'blog',
     'views.path' => dirname(__DIR__) . '/views',
     'twig.extensions' => [
       \DI\get(RouterTwigExtension::class),

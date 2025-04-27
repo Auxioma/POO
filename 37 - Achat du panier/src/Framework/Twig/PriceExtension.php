@@ -26,7 +26,7 @@ class PriceExtension extends \Twig\Extension\AbstractExtension
     public function getFilters()
     {
         return [
-            new \Twig_SimpleFilter('price_format', [$this, 'priceFormat'])
+            new \Twig\TwigFilter('price_format', [$this, 'priceFormat'])
         ];
     }
 

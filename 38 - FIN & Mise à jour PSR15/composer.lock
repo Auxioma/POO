@@ -590,7 +590,7 @@
                 "guzzlehttp/psr7": "^1.3",
                 "phpunit/phpunit": "^6.0|^7.0",
                 "slim/slim": "^3.5",
-                "squizlabs/php_codesniffer": "^3.0",
+                "squizlabs/php_codesniffer": "*",
                 "zendframework/zend-diactoros": "^1.3"
             },
             "type": "library",
@@ -640,7 +640,7 @@
                 "eloquent/phony-phpunit": "^3.0|^4.0",
                 "friendsofphp/php-cs-fixer": "^2.0",
                 "phpunit/phpunit": "^6.0|^7.0",
-                "squizlabs/php_codesniffer": "^3.0",
+                "squizlabs/php_codesniffer": "*",
                 "zendframework/zend-diactoros": "^1.3"
             },
             "type": "library",
