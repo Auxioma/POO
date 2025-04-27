@@ -28,7 +28,7 @@ return [
       \DI\get(FormExtension::class),
       \DI\get(CsrfExtension::class)
     ],
-    SessionInterface::class => \DI\object(PHPSession::class),
+    SessionInterface::class => \DI\autowire(PHPSession::class),
     CsrfMiddleware::class => \DI\autowire()->constructor(\DI\get(SessionInterface::class)),
     Router::class => \DI\factory(RouterFactory::class),
     RendererInterface::class => \DI\factory(TwigRendererFactory::class),

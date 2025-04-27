@@ -33,7 +33,7 @@ class TwigRendererFactory
         // On crée un "loader" pour Twig qui sait où chercher les fichiers .twig.
         // C’est un peu comme dire à Twig : "Voici ton dossier de vues".
         // ------------------------------------------------------------------------
-        $loader = new FilesystemLoader($viewPath);
+        $loader = new \Twig\Loader\FilesystemLoader($viewPath);
 
         // ------------------------------------------------------------------------
         // On crée ensuite le moteur de rendu Twig lui-même (l’environnement).

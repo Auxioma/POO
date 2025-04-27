@@ -24,7 +24,7 @@ return [
       \DI\get(FlashExtension::class),
       \DI\get(FormExtension::class)
     ],
-    SessionInterface::class => \DI\object(PHPSession::class),
+    SessionInterface::class => \DI\autowire(PHPSession::class),
     Router::class => \DI\autowire(),
     RendererInterface::class => \DI\factory(TwigRendererFactory::class),
     \PDO::class => function (\Psr\Container\ContainerInterface $c) {

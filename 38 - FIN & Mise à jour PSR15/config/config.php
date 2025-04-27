@@ -32,7 +32,7 @@ return [
       \DI\get(ModuleExtension::class),
       \DI\get(PriceExtension::class)
     ],
-    SessionInterface::class => \DI\object(PHPSession::class),
+    SessionInterface::class => \DI\autowire(PHPSession::class),
     CsrfMiddleware::class => \DI\autowire()->constructor(\DI\get(SessionInterface::class)),
     Router::class => \DI\factory(RouterFactory::class),
     RendererInterface::class => \DI\factory(TwigRendererFactory::class),

@@ -25,7 +25,7 @@ class TwigRendererFactory
         $viewPath = $container->get('views.path');
 
         // Initialisation du chargeur de fichiers pour Twig
-        $loader = new FilesystemLoader($viewPath);
+        $loader = new \Twig\Loader\FilesystemLoader($viewPath);
 
         // Création de l'environnement Twig
         $twig = new \Twig\Environment($loader);

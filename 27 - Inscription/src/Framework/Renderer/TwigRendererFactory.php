@@ -11,7 +11,7 @@ class TwigRendererFactory
     {
         $debug = $container->get('env') !== 'production';
         $viewPath = $container->get('views.path');
-        $loader = new FilesystemLoader($viewPath);
+        $loader = new \Twig\Loader\FilesystemLoader($viewPath);
         $twig = new \Twig\Environment($loader, [
             'debug' => $debug,
             'cache' => $debug ? false : 'tmp/views',

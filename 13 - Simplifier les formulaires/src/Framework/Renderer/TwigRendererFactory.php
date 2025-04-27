@@ -1,8 +1,9 @@
 <?php
 namespace Framework\Renderer;
 
-use Psr\Container\ContainerInterface;
+use Twig\Loader\FilesystemLoader;
 use Twig\Extension\DebugExtension;
+use Psr\Container\ContainerInterface;
 
 class TwigRendererFactory
 {
@@ -10,7 +11,7 @@ class TwigRendererFactory
     public function __invoke(ContainerInterface $container): TwigRenderer
     {
         $viewPath = $container->get('views.path');
-        $loader = new FilesystemLoader($viewPath);
+        $loader = new \Twig\Loader\FilesystemLoader($viewPath);
         $twig = new \Twig\Environment($loader, ['debug' => true]);
         $twig->addExtension(new DebugExtension());
         if ($container->has('twig.extensions')) {

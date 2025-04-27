@@ -19,7 +19,7 @@ class TwigRendererFactory
         $viewPath = $container->get('views.path');
 
         // On crée un "loader" Twig, qui sait où aller chercher les fichiers de templates.
-        $loader = new FilesystemLoader($viewPath);
+        $loader = new \Twig\Loader\FilesystemLoader($viewPath);
 
         // On initialise l'environnement Twig avec ce loader.
         $twig = new \Twig\Environment($loader);
