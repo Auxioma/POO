@@ -60,9 +60,9 @@ class PaginatedQuery implements AdapterInterface
      */
     public function getSlice($offset, $length): array
     {
-        $statement = $this->pdo->prepare($this->query . ' LIMIT :offset, :length');
-        $statement->bindParam('offset', $offset, \PDO::PARAM_INT);
+        $statement = $this->pdo->prepare($this->query . ' LIMIT :length OFFSET :offset');
         $statement->bindParam('length', $length, \PDO::PARAM_INT);
+        $statement->bindParam('offset', $offset, \PDO::PARAM_INT);
         $statement->setFetchMode(\PDO::FETCH_CLASS, $this->entity);
         $statement->execute();
         return $statement->fetchAll();

@@ -92,7 +92,7 @@ class AdminBlogAction
             $this->postTable->insert($params);
             return $this->redirect('blog.admin.index');
         }
-
+        $item = [];
         return $this->renderer->render('@blog/admin/create', compact('item'));
     }
 

@@ -22,7 +22,7 @@ class DatabaseTestCase extends TestCase
      */
     private $manager;
 
-    public function setUp()
+    public function setUp(): void
     {
         $pdo = new PDO('sqlite::memory:', null, null, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
